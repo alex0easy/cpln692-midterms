@@ -1,5 +1,3 @@
-
-
 var map = L.map('map', {
   center: [39.9042, 116.4074],
   zoom: 11
@@ -13,40 +11,22 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
   ext: 'png'
 }).addTo(map);
 
-
 // Actual mapping
 
 $(document).ready(function() {
-  changebutton(pagenumber);
-  changetext(pagenumber);
-
-  getAndParseData();
-  resetMap();
-
-
-  $('#nextbutton').click(function(){
-    pagenumber ++;
-    changebutton(pagenumber);
-    changetext(pagenumber);
-
-    resetMap();
+  $.ajax(Url).done(function(d) {
+    allData = JSON.parse(d);
     console.log(allData);
-    //myMarkers = ;
-    //myMarkers = makeMarkers(allData);
-    //plotMarkers(allData);
+    makePage();
+
+    $('#nextbutton').click(function() {
+      pagenumber++;
+      makePage();
+    });
+
+    $('#previousbutton').click(function() {
+      pagenumber--;
+      makePage();
+    });
   });
-
-  $('#previousbutton').click(function(){
-    pagenumber --;
-    changebutton(pagenumber);
-    changetext(pagenumber);
-
-    resetMap();
-
-  });
-});
-
-
-/*
-ACTUALLY RUNNING
-*/
+})

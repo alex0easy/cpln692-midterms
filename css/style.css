@@ -30,3 +30,13 @@ body {
     margin-left: 40px;
     color: darkslategray;
 }
+
+.inputbox{
+  margin-top: 5px;
+  background-color: #FFFAF0;
+}
+
+.infobox{
+  font: Courier;
+  color: #BA4A00;
+}

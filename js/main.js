@@ -11,10 +11,8 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
   ext: 'png'
 }).addTo(map);
 
-// Actual mapping
 
 $(document).ready(function() {
-
 
   $.ajax(Url).done(function(d) {
     allData = JSON.parse(d);
@@ -30,5 +28,9 @@ $(document).ready(function() {
       pagenumber--;
       makePage();
     });
+
+    $('#plotbutton').click(function(){
+      specialMakePage();
+    });
   });
-})
+});

@@ -112,7 +112,7 @@ var filterdata = {
     return sample;
   },
   4: function(list) {
-    var sample =
+    var sample = [];
     // Used to store user's input
     var selection = {
       selectprice: $('#cbox-input1').prop('checked'),

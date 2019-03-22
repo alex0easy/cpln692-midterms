@@ -59,6 +59,7 @@ titletext[4] = 'Custom Filter';
 
 
 // FUNCTION FOR FILTERING DATA FOR EACH PAGE
+// Stored in an object, each property is a function for a page.
 
 var filterdata = {
   0: function(list) {
@@ -111,7 +112,8 @@ var filterdata = {
     return sample;
   },
   4: function(list) {
-    var sample = [];
+    var sample =
+    // Used to store user's input
     var selection = {
       selectprice: $('#cbox-input1').prop('checked'),
       lowprice: $('#lowerprice').val(),

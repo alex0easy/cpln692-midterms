@@ -1,13 +1,17 @@
-// Global variables
+/*
+THIS FILE IS USED TO STORE DATA THAT APPLIES TO ALL PAGES
+*/
+
+// VARIABLES
 var pagenumber = 0; // start with 0;
 var Url = "https://raw.githubusercontent.com/alex0easy/cpln692-midterms/master/data/sample.json";
 var allData; // For storing all data;
 var pageData; // For storing data to be made into markers;
 var myMarkers; // For storing markers.
-var myPopups; // For storing popups
 
-// Global functions
+// FUNCTIONS
 
+// Clear the map
 var resetMap = function() {
   _.forEach(myMarkers, function(o) {
     map.removeLayer(o);
@@ -16,6 +20,7 @@ var resetMap = function() {
   $('#infotext').show();
 };
 
+// Generate the info you see in the box
 var generateinfo = function(data) {
   var info = {
     totalsize: data.square,
@@ -27,6 +32,7 @@ var generateinfo = function(data) {
   return info;
 };
 
+// Make the markers
 var makeMarkers = function(list) {
   var markerlist = [];
   _.each(list, function(o) {
@@ -40,6 +46,7 @@ var makeMarkers = function(list) {
   return markerlist;
 };
 
+// Display the stored info in the table area
 var getSubway = function (o) {
   if (o.subway ==1){return "Yes"} else {return "No"};
 };
@@ -57,6 +64,7 @@ var displaytable = function(obj) {
   $('#nsubwaynearby').text(subwayinfo);
 };
 
+// Add markers to map
 var plotMarkers = function(list) {
   _.each(list, function(marker) {
     marker.addTo(map).on('click', function(e) {
@@ -65,7 +73,7 @@ var plotMarkers = function(list) {
   });
 };
 
-
+// Change the texts on the page on page switch
 var changetext = function(pagenumber) {
   $('#text-label1').text(bodytext[pagenumber]);
   $('#text-label2').text(bodytext2[pagenumber]);
@@ -74,7 +82,6 @@ var changetext = function(pagenumber) {
   if (pagenumber == 0) {
     $('#previousbutton').hide();
     $('#inputs').hide();
-
   } else if (pagenumber == 4) {
     $('#nextbutton').hide();
     $('#inputs').show();
@@ -86,6 +93,7 @@ var changetext = function(pagenumber) {
   };
 };
 
+// Generates the page
 var makePage = function() {
   if (pagenumber < 4) { // if not last page
     resetMap(); // Clears previous map.
@@ -102,6 +110,7 @@ var makePage = function() {
   }
 };
 
+// Generates the last page
 var specialMakePage = function() { // just for last page
   resetMap();
   pageData = filterdata[4](allData);

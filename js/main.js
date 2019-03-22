@@ -1,3 +1,5 @@
+// Actually does the work
+
 var map = L.map('map', {
   center: [39.9042, 116.4074],
   zoom: 11
